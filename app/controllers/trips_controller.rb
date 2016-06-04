@@ -19,6 +19,7 @@ class TripsController < OpenReadController
   # POST /trips.json
   def create
     @trip = Trip.new(trip_params)
+    @trip.user_id = current_user.id
 
     if @trip.save
       render json: @trip, status: :created, location: @trip
