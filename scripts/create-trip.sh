@@ -1,5 +1,6 @@
 curl --include --request POST http://localhost:3000/trips \
   --header "Content-Type: application/json" \
+  --header "Authorization: Token token=$TOKEN" \
   --data '{
     "trip": {
       "name": "Nick`s Test Trip 2",
