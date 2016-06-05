@@ -1,5 +1,6 @@
 curl --include --request POST http://localhost:3000/trips \
   --header "Content-Type: application/json" \
+  --header "Authorization: Token token=$TOKEN" \
   --data '{
     "trip": {
       "name": "Ozarks Trip",
@@ -13,6 +14,7 @@ curl --include --request POST http://localhost:3000/trips \
 
 curl --include --request POST http://localhost:3000/trips \
   --header "Content-Type: application/json" \
+  --header "Authorization: Token token=$TOKEN" \
   --data '{
     "trip": {
       "name": "Green Mountains Backpack",
@@ -26,6 +28,7 @@ curl --include --request POST http://localhost:3000/trips \
 
 curl --include --request POST http://localhost:3000/trips \
   --header "Content-Type: application/json" \
+  --header "Authorization: Token token=$TOKEN" \
   --data '{
     "trip": {
       "name": "Alpine Skiing",

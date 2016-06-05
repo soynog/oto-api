@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :invitations, except: [:new, :edit]
   resources :trips, except: [:new, :edit]
   resources :examples, except: [:new, :edit]
   post '/sign-up' => 'users#signup'
