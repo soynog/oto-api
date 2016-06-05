@@ -1,12 +1,15 @@
-class TripsController < OpenReadController
+class TripsController < ProtectedController
+  READ_ACTIONS = [:show].freeze
+  skip_before_action :authenticate, only: READ_ACTIONS
+  # before_action :set_current_user, only: READ_ACTIONS
   before_action :set_trip, only: [:show, :update, :destroy, :invite]
 
   # GET /trips
   # GET /trips.json
   def index
-    @trips = Trip.all
+    @trips = current_user.trips
 
-    render json: @trips
+    render json: @trips, include: 'invitations.user'
   end
 
   # GET /trips/1
