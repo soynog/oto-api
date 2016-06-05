@@ -1,5 +1,5 @@
 class TripsController < OpenReadController
-  before_action :set_trip, only: [:show, :update, :destroy]
+  before_action :set_trip, only: [:show, :update, :destroy, :invite]
 
   # GET /trips
   # GET /trips.json
@@ -40,6 +40,16 @@ class TripsController < OpenReadController
       head :no_content
     else
       render json: @trip.errors, status: :unprocessable_entity
+    end
+  end
+
+  # Invite Users to the trip
+  # For each user ID passed, finds the user associated with that ID and invites that user if not already invited
+  def invite
+    invitees = params['users']
+    invitees.each do |user_id|
+      user = User.find(user_id)
+      @trip.users << user unless @trip.users.include?(user)
     end
   end
 
