@@ -12,7 +12,7 @@ class TripsController < OpenReadController
   # GET /trips/1
   # GET /trips/1.json
   def show
-    render json: @trip
+    render json: @trip, include: 'invitations.user'
   end
 
   # POST /trips
