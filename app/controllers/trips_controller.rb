@@ -20,6 +20,9 @@ class TripsController < OpenReadController
   def create
     @trip = Trip.new(trip_params)
     @trip.user_id = current_user.id
+    @trip.users << current_user
+    p "Trip Participants Are..."
+    puts @trip.users
 
     if @trip.save
       render json: @trip, status: :created, location: @trip
