@@ -1,0 +1,4 @@
+class Invitation < ActiveRecord::Base
+  belongs_to :user, inverse_of: :invitations
+  belongs_to :trip, inverse_of: :invitations
+end
