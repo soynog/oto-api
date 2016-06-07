@@ -18,6 +18,11 @@ class InvitationsController < ApplicationController
   # POST /invitations
   # POST /invitations.json
   def create
+    # puts "Current User is: #{current_user[:id]}"
+    # print "Params: #{invitation_params}"
+    # invitation_params[:invitation][:user_id] = 1 if invitation_params[:invitation][:user_id] == nil
+    # print "Params: #{invitation_params}"
+
     @invitation = Invitation.new(invitation_params)
 
     if @invitation.save
