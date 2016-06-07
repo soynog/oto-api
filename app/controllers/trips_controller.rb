@@ -37,6 +37,10 @@ class TripsController < ProtectedController
   # PATCH/PUT /trips/1
   # PATCH/PUT /trips/1.json
   def update
+    puts "Params for Update: "
+    puts trip_params
+    puts trip_params[:invitations]
+
     @trip = Trip.find(params[:id])
 
     if @trip.update(trip_params)
@@ -71,6 +75,6 @@ class TripsController < ProtectedController
     end
 
     def trip_params
-      params.require(:trip).permit(:name, :start_date, :end_date, :location, :description, :user_id)
+      params.require(:trip).permit(:name, :start_date, :end_date, :location, :description, :user_id, :invitations)
     end
 end
