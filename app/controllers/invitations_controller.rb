@@ -1,4 +1,4 @@
-class InvitationsController < ProtectedController
+class InvitationsController < ApplicationController
   before_action :set_invitation, only: [:show, :update, :destroy]
 
   # GET /invitations
