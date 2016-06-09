@@ -3,8 +3,6 @@ curl --include --request POST http://localhost:3000/invitations \
   --header "Authorization: Token token=$TOKEN" \
   --data '{
     "invitation": {
-      "status": "going",
-      "trip_id": 70,
-      "user_id": 1
+      "trip_id": 70
     }
   }'

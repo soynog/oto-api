@@ -1,4 +1,4 @@
-class InvitationsController < ApplicationController
+class InvitationsController < ProtectedController
   before_action :set_invitation, only: [:show, :update, :destroy]
 
   # GET /invitations
@@ -18,12 +18,17 @@ class InvitationsController < ApplicationController
   # POST /invitations
   # POST /invitations.json
   def create
-    # puts "Current User is: #{current_user[:id]}"
+    puts "Current User is: #{current_user[:id]}"
     # print "Params: #{invitation_params}"
     # invitation_params[:invitation][:user_id] = 1 if invitation_params[:invitation][:user_id] == nil
-    # print "Params: #{invitation_params}"
+    print "Params: #{invitation_params}"
+    params = {}
+    params["trip_id"] = invitation_params[:trip_id]
+    params["status"] = invitation_params[:status] || "going"
+    params["user_id"] = invitation_params[:user_id] || current_user[:id]
+    print "Updated Params: #{params}"
 
-    @invitation = Invitation.new(invitation_params)
+    @invitation = Invitation.new(params)
 
     if @invitation.save
       render json: @invitation, status: :created, location: @invitation
