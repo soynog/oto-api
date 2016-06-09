@@ -1,6 +1,6 @@
 #
 class UsersController < ProtectedController
-  skip_before_action :authenticate, only: [:signup, :signin]
+  skip_before_action :authenticate, only: [:signup, :signin, :show]
 
   # POST '/sign-up'
   def signup
@@ -61,7 +61,11 @@ class UsersController < ProtectedController
 
   def user_creds
     params.require(:credentials)
-          .permit(:email, :password, :password_confirmation)
+          .permit(:email,
+                  :first_name,
+                  :last_name,
+                  :password,
+                  :password_confirmation)
   end
 
   def pw_creds
